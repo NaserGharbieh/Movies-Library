@@ -85,7 +85,8 @@ catch(error){
 }
 }
  function search(req,res){
-    const url=`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=The&page=2`;
+     let movieName=req.query.query;
+    const url=`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieName}&page=2`;
     try {
      axios.get(url)
      .then(result=>{let resultAxois=result.data.results.map(item=>{
