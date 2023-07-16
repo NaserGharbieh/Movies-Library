@@ -45,6 +45,7 @@ function homePage(req, res) {
     res.send(singleMovie);
 }
 
+
 server.get('/favorite', handleFavorite);
 
 function handleFavorite(req, res) {
@@ -94,6 +95,7 @@ function search(req,res){
 } 
 } 
 function discover(req, res) {
+
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false`;
     try {
         axios.get(url)
@@ -258,3 +260,4 @@ client.connect().then(() => {
         console.log("Welcome on my host:" + PORT);
     });
 })
+
