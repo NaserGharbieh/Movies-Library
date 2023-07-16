@@ -76,22 +76,22 @@ function trending(req, res) {
     }
 }
 function search(req,res){
-    let movieName=req.query.query;
-   const url=`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieName}&page=2`;
-   try {
-    axios.get(url)
-    .then(result=>{let resultAxois=result.data.results.map(item=>{
-       let singleMovie = new Format(item.id,item.title,item.release_date,item.poster_path,item.overview);
-       return singleMovie;
-   })
-   res.send(resultAxois);
+     let movieName=req.query.query;
+    const url=`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieName}&page=2`;
+    try {
+     axios.get(url)
+     .then(result=>{let resultAxois=result.data.results.map(item=>{
+        let singleMovie = new Format(item.id,item.title,item.release_date,item.poster_path,item.overview);
+        return singleMovie;
+    })
+    res.send(resultAxois);
 }    ).catch((error)=>{
-   console.log('Try again somthing happend',error)
-   res.status(500).send(error);
+    console.log('Try again somthing happend',error)
+    res.status(500).send(error);
 })
 
 } catch (error) {
-   errorHandler(error,req,res)
+    errorHandler(error,req,res)
 } 
 } 
 function discover(req, res) {
